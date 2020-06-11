@@ -1,16 +1,16 @@
 <?php 
 
-	$username = $_POST['username'];
+	$user_name = $_POST['username'];
 	$phone = $_POST['phone'];
 	$message = $_POST['message'];
-echo '用户名：'. $username;
+echo '用户名：'. $user_name;
 echo '联系方式：' . $phone;
 echo '留言内容：' . $message;
 
 $servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "myDB";
+$username = "root";
+$password = "lk19950725";
+$dbname = "likun";
  
 // 创建连接
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,8 +19,8 @@ if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 } 
  
-$sql = "INSERT INTO MyGuests (firstname, lastname, email)
-VALUES ('John', 'Doe', 'john@example.com')";
+$sql = "INSERT INTO message_board (username, phone, message)
+VALUES (".$user_name.", ".$phone.", ".$message.")";
  
 if ($conn->query($sql) === TRUE) {
     echo "新记录插入成功";
